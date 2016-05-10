@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Static Image</title>
+    <link rel="stylesheet" href="ol.css" type="text/css">
+    <script src="ol.js"></script>
+    <style>
+    html, body, .container, .map {
+    	margin: 0;
+    	width: 100%;
+    	height: 100%;
+    }
+    .container {
+    	position: relative;
+    }
+    .sidebar {
+    	position: absolute;
+    	top: 50px;
+    	right: 50px;
+    	width: 300px;
+    	min-height: 100px;
+    	background-color: rgba(255,255,255,0.9);
+    	padding: 30px;
+    }
+    .sidebar img {
+    	max-width: 260px;
+    	max-height: 400px;
+    }
+    </style>
+  </head>
+  <body>
+  	<div class="container">
+    <div id="map" class="map"></div>
+    <div class="sidebar" id="sidebar">Please select a site</div>
+    </div>
+
+    <script>
+      var geojsonObject = {
+        "type":"FeatureCollection",
+        "features": [
+
+// Known World
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2154.0,2835-943.0]},"properties":{"name": "Thyatis", link: "http://pandius.com/thyatis.html", image: "http://pandius.com/fndz86.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2090.0,2835-932.0]},"properties":{"name": "Specularum", "capitalOf": "the Grand duchy of Karameikos", "link": "http://pandius.com/karameik.html", image: "http://pandius.com/2ts94.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2049.0,2835-933.0]},"properties":{"name": "Shireton", "capitalOf": "Five Shires", "link": "http://pandius.com/five.html", image: "http://pandius.com/iqlvz9.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2031.0,2835-902.0]},"properties":{"name": "Darokin", link: "http://pandius.com/darokin.html", image: "http://pandius.com/24uvkbc.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2058.0,2835-888.0]},"properties":{"name": "Alfheim", link: "http://pandius.com/aengmor.html", image: "http://pandius.com/2zoek9z.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2153.0,2835-898.0]},"properties":{"name": "Ylaruam", link: "http://pandius.com/ylaruam.html", image : "http://pandius.com/iqllj5.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2024.0,2835-843.0]},"properties":{"name": "Glantri", "link": "http://pandius.com/glantri.html", image: "http://pandius.com/21l935g.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2155.0,2835-833.0]},"properties":{"name": "Norrvik", "capitalOf": "Vestland", link: "http://pandius.com/vestland.html", image: "http://pandius.com/30vc2f8.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2180.0,2835-853.0]},"properties":{"name": "Soderfjord", link: "http://pandius.com/soderfjo.html", image: "http://pandius.com/zl66gw.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2189.0,2835-823.0]},"properties":{"name": "Zeaburg", "capitalOf": "Ostland", "link": "http://pandius.com/ostland.html", image: "http://pandius.com/35jfsec.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2116.0,2835-819.0]},"properties":{"name": "World mountain", "link": "http://pandius.com/ethengar.html", image: "http://pandius.com/28iq97o.jpg"}}, // Ethengar khanates
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2119.0,2835-861.0]},"properties":{"name": "Dengar", "capitalOf": "Rockhome", "link": "http://pandius.com/rockhome.html", image: "http://pandius.com/1554aww.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2105.0,2835-967.0]},"properties":{"name": "Minrothad", "capitalOf": "Minrothad guilds", link: "http://pandius.com/minroth.html", image: "http://pandius.com/105y9aa.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2032.0,2835-964.0]},"properties":{"name": "Ierendi", link: "http://pandius.com/ierendi.html", image: "http://pandius.com/vnh1t0.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1978.0,2835-915.0]},"properties":{"name": "Palace of Atruaghin", "capitalOf": "Atruaghin clans", "link": "http://pandius.com/atruagh.html", image: "http://pandius.com/2ltg6k2.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2137.0,2835-780.0]},"properties":{"name": "Freiburg", "capitalOf": "Heldannic territories", "link": "http://pandius.com/heldann.html", image: "http://pandius.com/24y3ihd.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1927.0,1939.0]},"properties":{"name": "Sayr Ulan", "capitalOf": "Sind", link: "http://pandius.com/sind.html", image: "http://pandius.com/bdv1gz.jpg"}}, // Sind
+//TODO:
+//The Broken Lands and Oenkmar 
+//Cynidicea 
+//The Sea of Dread and the Thanegioth Archipelago 
+//Serraine
+//Shadowdeep
+//Shadow Elves' Territories 
+//Undersea
+
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1781.0,1601.0]},"properties":{"name": "Tanakumba", "capitalOf": "Yavldom", "link": "http://pandius.com/yavdlom.html", image: "http://pandius.com/29ll5qu.jpg"}}, // Yavldom
+//TODO:
+//Ulimwengu
+//Serpent Peninsula 
+//Graakhalia 
+//The Plain of Fire and The Sind Desert 
+//Adri Varma Plateau 
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2042.0,2835-769.0]},"properties":{"name": "Wendar", link: "http://pandius.com/wendar.html", image: "http://pandius.com/1zm2jjn.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2057.0,2835-688.0]},"properties":{"name": "Gereth Minar", link: "http://pandius.com/denagoth.html", image: "http://pandius.com/29legbk.jpg"}}, // Denagoth -- not marked as a capital, which it isn't, probably
+
+// Norwold
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2221.0,2173.0]},"properties":{"name": "Oceansend", image: "http://pandius.com/219tft1.jpg"}}, // Kingdom
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2237.0,2271.0]},"properties":{"name": "Alpha", capitalOf: "Norwold", link: "http://pandius.com/norwold.html", image: "http://pandius.com/kdwlg7.jpg"}}, // Norwold as a whole province of Alphatia?
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2157.0,2260.0]},"properties":{"name": "Leeha", image: "http://pandius.com/11r63gj.jpg"}}, // Shire
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2150.0,2105.0]},"properties":{"name": "Landfall"}}, // Duchy
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2200.0,2132.0]},"properties":{"name": "Lighthall"}}, // County
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2148.0,2367.0]},"properties":{"name": "Kaarja", capitalOf: "Kaarjala", link: "http://pandius.com/kaarjala.html"}}, // Kaarjala
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2297.0,2331.0]},"properties":{"name": "Gaudavpils", capitalOf: "Littonia", link: "http://pandius.com/littonia.html"}},
+//TODO:
+//Frosthaven
+//Karawenn
+//Wyrmsteeth
+
+// Hill and Dale
+// Ghyr and allies
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2048.0,2231.0]},"properties":{"name": "Ghyr", link: "http://pandius.com/ghyr.html", image: "http://pandius.com/2zhpksg.jpg"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2001.0,2250.0]},"properties":{"name": "Castle Greendale"}}, // Greendale
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1985.0,2265.0]},"properties":{"name": "Deep Hollow"}}, // name of capital unknown
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1989.0,2133.0]},"properties":{"name": "Northern Wildlands"}}, // region
+
+// Western Alliance
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1930.0,2835-568.0]},"properties":{"name": "Taralon"}}, // The Misty Kingdom
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1923.0,2835-557.0]},"properties":{"name": "Snowden"}}, 
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1945.0,2835-575.0]},"properties":{"name": "Dauphins"}}, // The Kingdom of Two Hundred Knights
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1959.0,2835-566.0]},"properties":{"name": "Nortopolis"}}, //The Kingdom of Many Colors 
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1922.0,2835-603.0]},"properties":{"name": "West Haven"}}, 
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1929.0,2835-541.0]},"properties":{"name": "Roagendoch"}}, // Kingdom of the Lowland Roags 
+
+// Hule & Midlands
+
+// Black Mountains
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1781.0,2020.0]},"properties":{"name": "Erdnidze", "capitalOf": "Chengouch", link: "http://pandius.com/blkmnts.html"}}, // not marked as a capital
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1748.0,2032.0]},"properties":{"name": "Ienizvan", capitalOf: "Dvinzina", link: "http://pandius.com/blkmnts.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1827.0,2026.0]},"properties":{"name": "Djukhra", capitalOf: "Kyurdukstan", link: "http://pandius.com/blkmnts.html"}}, // not marked as a capital
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1827.0,2056.0]},"properties":{"name": "Houriani", "capitalOf": "Grouzhina", link: "http://pandius.com/blkmnts.html"}}, 
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1776.0,2040.0]},"properties":{"name": "Azkoran", capitalOf: "Azardjian", link: "http://pandius.com/blkmnts.html"}},
+// Midlands
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1736.0,2078.0]},"properties":{"name": "Kiteng"}}, // Sardjikdjian
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1675.0,2148.0]},"properties":{"name": "Tachgoun"}}, // Douzbakjian
+
+// The Nine Kingdoms
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1674.0,1997.0]},"properties":{"name": "Seyvan"}}, // Karsun
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1734.0,2014.0]},"properties":{"name": "Erzmin"}}, // Karsile
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1699.0,1995.0]},"properties":{"name": "Cirkara"}}, // Eivanjan
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1727.0,1970.0]},"properties":{"name": "Magden"}}, // Birgidir
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1694.0,1978.0]},"properties":{"name": "Jandak"}}, // Huyule
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1685.0,1954.0]},"properties":{"name": "Khuur"}}, // Boludir
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1694.0,1936.0]},"properties":{"name": "Jehrom"}}, // Jandir
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1650.0,1922.0]},"properties":{"name": "Iskilü"}}, // Kuliye, approx
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1677.0,1908.0]},"properties":{"name": "Azurun"}}, // Yozgulak
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1624.0,1968.0]},"properties":{"name": "Temple of Chaos", "capitalOf": "Hule", "link": "http://pandius.com/hule.html", image: "http://pandius.com/2r5s0p2.jpg"}}, // Hule as whole
+
+// Converted lands
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1538.0,1905.0]},"properties":{"name": "Kulnovo"}}, // The Olgarian levtja
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1533.0,1946.0]},"properties":{"name": "Miriestiu"}}, // The Bulzan voïvodina
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1577.0,1987.0]},"properties":{"name": "Prijderel"}}, // The sandjak of Antasyn
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1588.0,2000.0]},"properties":{"name": "Debredladany"}}, // The Mozganian banat
+
+// City-states of Gulf of Hule
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1698.0,1864.0]},"properties":{"name": "Slagovich", "link": "http://pandius.com/city_sta.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1687.0,1873.0]},"properties":{"name": "Shkodar\n(Hojah)", "link": "http://pandius.com/city_sta.html"}}, // City-State of Hojah
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1684.0,1887.0]},"properties":{"name": "Raska\n(Zvornik)", "link": "http://pandius.com/city_sta.html"}}, // City-State of Zvornik
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1701.0,1899.0]},"properties":{"name": "Zagora", "link": "http://pandius.com/city_sta.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1710.0,1908.0]},"properties":{"name": "Nova Svoga", "link": "http://pandius.com/city_sta.html"}},
+
+// Savage Baronies - baronies names are used instead of capitals
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1664.0,1886.0]},"properties":{"name": "Vilaverde", link: "http://pandius.com/baronies.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1645.0,1888.0]},"properties":{"name": "Texeiras", link: "http://pandius.com/baronies.html"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1609.0,1841.0]},"properties":{"name": "Cimarron", link: "http://pandius.com/baronies.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1625.0,1848.0]},"properties":{"name": "Atmarrón", link: "http://pandius.com/baronies.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1624.0,1868.0]},"properties":{"name": "Gargoña", link: "http://pandius.com/baronies.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1646.0,1866.0]},"properties":{"name": "Narvaez", link: "http://pandius.com/baronies.html"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1613.0,1874.0]},"properties":{"name": "Saragón", link: "http://pandius.com/baronies.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1596.0,1871.0]},"properties":{"name": "Guadalante", link: "http://pandius.com/baronies.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1622.0,1890.0]},"properties":{"name": "Torreón", link: "http://pandius.com/baronies.html"}},
+
+
+// Savage Coast
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1538.0,1846.0]},"properties":{"name": "Eyf", capitalOf: "Robrenn", link: "http://pandius.com/robrenn.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1491.0,1812.0]},"properties":{"name": "Gundegard", capitalOf: "Eusdria", link: "http://pandius.com/eusdria.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1456.0,1823.0]},"properties":{"name": "Louvines", capitalOf: "Renardy", link: "http://pandius.com/renardy.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1412.0,1820.0]},"properties":{"name": "Leominster", capitalOf: "Bellayne", link: "http://pandius.com/bell.html"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1462.0,1808.0]},"properties":{"name": "Dunwick", link: "http://pandius.com/torttrib.html"}}, // free city in tortles tribeland
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1356.0,1813.0]},"properties":{"name": "Belphemon", capitalOf: "Herath", link: "http://pandius.com/mherath.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1285.0,1740.0]},"properties":{"name": "Orcs of the Dark Jungle", "link": "http://pandius.com/orcheadp.html"}}, // tribes
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1279.0,1791.0]},"properties":{"name": "Ittucá", capitalOf: "Jibarú", link: "http://pandius.com/ljibaru.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1263.0,1771.0]},"properties":{"name": "Er", capitalOf: "Nimmur", link: "http://pandius.com/knimmur.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1317.0,1795.0]},"properties":{"name": "Risilvar", link: "http://pandius.com/lwallara.html"}}, // Land of the Wallara
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1346.0,1835.0]},"properties":{"name": "Gurr’ash", capitalOf: "Ator", link: "http://pandius.com/squamous.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1361.0,1833.0]},"properties":{"name": "Ah’roog", capitalOf: "Shazak", link: "http://pandius.com/squamous.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1338.0,1848.0]},"properties":{"name": "Tu’eth", capitalOf: "Cay", link: "http://pandius.com/squamous.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1302.0,1857.0]},"properties":{"name": "Richland"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1299.0,1937.0]},"properties":{"name": "Cropland"}}, // Kishinev on Yalu bay map
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1444.0,1886.0]},"properties":{"name": "Plaktur", "link": "http://pandius.com/yazak.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1315.0,1929.0]},"properties":{"name": "Dravya", "link": "http://pandius.com/yazak.html"}}, // Dradze; ruins?; Chaotic sisterhood
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1355.0,1917.0]},"properties":{"name": "Yazak\nruins", "link": "http://pandius.com/yazak.html"}}, // ruins; Lawful brotherhood
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1483.0,2001.0]},"properties":{"name": "Bylot\nruins"}}, // ruins; Neutral alliance
+
+
+
+// Yalu bay and Arm of the Immortals
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1319.0,1990.0]},"properties":{"name": "Zuyganev", capitalOf: "Zuevo", link: "http://pandius.com/zuyevo.html"}},
+
+// Yezchamenid
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1237.0,2835-887.0]},"properties":{"name": "Darsagades", capitalOf: "Darsi and Yezchamenid empire as a whole", link: "http://pandius.com/yzchmnid.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1204.0,1876.0]},"properties":{"name": "Uvar", capitalOf: "Uvaraz", link: "http://pandius.com/yzchmnid.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1149.0,1886.0]},"properties":{"name": "Degerin", capitalOf: "Pazarkan", link: "http://pandius.com/yzchmnid.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1104.0,1888.0]},"properties":{"name": "Ishmar", capitalOf: "Mebirush", link: "http://pandius.com/yzchmnid.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1126.0,1940.0]},"properties":{"name": "Utsidon", capitalOf: "Yivja", link: "http://pandius.com/yzchmnid.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1172.0,1984.0]},"properties":{"name": "Attasar", capitalOf: "Hattas", link: "http://pandius.com/yzchmnid.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1174.0,1950.0]},"properties":{"name": "Praptanj", capitalOf: "Zrakan", link: "http://pandius.com/yzchmnid.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1120.0,1865.0]},"properties":{"name": "Asniveh", capitalOf: "Chura", link: "http://pandius.com/yzchmnid.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1090.0,1857.0]},"properties":{"name": "Zabiis", capitalOf: "Draya", link: "http://pandius.com/yzchmnid.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1129.0,1821.0]},"properties":{"name": "Nishep", capitalOf: "Midan", link: "http://pandius.com/yzchmnid.html"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1083.0,1787.0]},"properties":{"name": "Beelodaar", capitalOf: "Adilli"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1120.0,1781.0]},"properties":{"name": "Ithuil"}}, // Aeryl
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1127.0,1705.0]},"properties":{"name": "Emdur", capitalOf: "Gombar", link: "http://pandius.com/gombar.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1125.0,1676.0]},"properties":{"name": "Sumag", capitalOf: "Suma’a", link: "http://pandius.com/sumaa.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1176.0,1699.0]},"properties":{"name": "Sardon", capitalOf: "Eshu"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1222.0,1661.0]},"properties":{"name": "Sulkar"}}, // tribe
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1207.0,1690.0]},"properties":{"name": "Yamekh"}}, // tribe
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1210.0,1743.0]},"properties":{"name": "Gonham"}}, // Ghonam, tribe
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1303.0,1471.0]},"properties":{"name": "Nastoreth", link: "http://pandius.com/arm_imm.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1152.0,1628.0]},"properties":{"name": "Noxor"}},
+/*{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1303.0,1471.0]},"properties":{"name": "Nastoreth"}},*/
+
+
+
+// Dark Wilerness - mostly nomadic tribes
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1614.0,2835-454.0]},"properties":{"name": "Zoïtagal\ngoblins"}}, 
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1588.0,2835-509.0]},"properties":{"name": "Gardener\nelves"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1682.0,2835-452.0]},"properties":{"name": "Nuvaïts"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1698.0,2835-485.0]},"properties":{"name": "Mashmillog\nbugbears"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1722.0,2835-517.0]},"properties":{"name": "Nirmals"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1693.0,2835-506.0]},"properties":{"name": "Noïciem\ngnolls"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1656.0,2835-484.0]},"properties":{"name": "Guymïrs"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1547.0,2835-527.0]},"properties":{"name": "Guslash\nogres"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1520.0,2835-555.0]},"properties":{"name": "Garraktai\norcs"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1520.0,2835-587.0]},"properties":{"name": "Zenets"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1552.0,2835-601.0]},"properties":{"name": "Evenkirs"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1531.0,2835-618.0]},"properties":{"name": "Mortis"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1498.0,2835-632.0]},"properties":{"name": "Nyatkai\ngoblins"}}, // approx
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1437.0,2835-646.0]},"properties":{"name": "Saanals"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1743.0,2310.0]},"properties":{"name": "Sondyghars"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1746.0,2317.0]},"properties":{"name": "Trakentaar\nhill giants"}}, // approx
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1627.0,2316.0]},"properties":{"name": "Lazatman\nhobgoblins"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1690.0,2273.0]},"properties":{"name": "Chanturs"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1597.0,2279.0]},"properties":{"name": "Jordaves"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1641.0,2259.0]},"properties":{"name": "Saïnin"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1720.0,2250.0]},"properties":{"name": "Kourontis"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1641.0,2259.0]},"properties":{"name": "Saïnin"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1700.0,2206.0]},"properties":{"name": "Dortegul\ngoblins"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1580.0,2165.0]},"properties":{"name": "Jochors"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1539.0,2197.0]},"properties":{"name": "Sanis"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1606.0,2191.0]},"properties":{"name": "Sandsurfer\ngnolls"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1706.0,2297.0]},"properties":{"name": "Drakalmar\norcs"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1716.0,2392.0]},"properties":{"name": "Mlazned\ncryions"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1789.0,2293.0]},"properties":{"name": "Othwa\ngoblins"}}, // compromise
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1769.0,2247.0]},"properties":{"name": "Gronmak\norcs"}}, // compromise
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1753.0,2372.0]},"properties":{"name": "Sha’arnavut\ntrolls"}}, // compromise
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1767.0,2353.0]},"properties":{"name": "Noriaks"}}, // compromise
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1784.0,2324.0]},"properties":{"name": "Graznak\nogres"}}, // compromise
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1869.0,2356.0]},"properties":{"name": "Zzanigern\nfrost giants"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1942.0,2201.0]},"properties":{"name": "Kosz’shaak\ntrolls"}}, // compromise
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1899.0,2177.0]},"properties":{"name": "Moïntyrs"}}, // compromise
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1923.0,2188.0]},"properties":{"name": "Burundor\nbugbears"}}, // compromise
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1911.0,2200.0]},"properties":{"name": "Oughaïs"}}, // compromise
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1878.0,2208.0]},"properties":{"name": "Tchallins"}}, // compromise
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1897.0,2150.0]},"properties":{"name": "Galandar"}}, // Galannor
+
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1635.0,2203.0]},"properties":{"name": "Ilmec"}},
+
+
+
+
+//"http://spriggans-den.com/wp-content/uploads/2015/03/cc_cryion-300x263.jpg"
+
+// Klagorst confederation - very approximate
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1347.0,2835-542.0]},"properties":{"name": "Port Fewalskij", "capitalOf": "the Barony of Fewalskij", "areaPopulation": 2500, "description": "This seaport is inhabited mostly by humans, though some hresha-rhak live here occasionally. Port Fewalskij is the principal port that connects the Heartlands with the hydrax settlement to the north, and the hresha-rhak dominion to the west. Hydrax are normally never seen here; they prefer to rely on human agents, who are all members of the Blue Wind, an order whose base is in the city centre. Nearly insignificant is the little land owned by the city's baron, Sir Markus Achresk (Baron, human, male, M12), not even enough to sustain the need for food, that must be mostly imported from the southern Heartlands.", "link": "http://pandius.com/klagorst.html", "author": "Giulio diSergio-Orsini"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1383.0,2835-556.0]},"properties":{"name": "Gask", "capitalOf": "the County of Gask", "areaPopulation": 7500, "description": "The County of Gask is another quite civilised territory, and is named after its capital, that also hosts the confederative palace, where representatives of the seven nations debate pointlessly on every single question of some relevance to the confederation. The president of the confederation is the current Count of Gask, Nilas Dowalski (Count, human, male, F14). The soil of the county is quite poor, but the waters of Gask are rich of fish, and the good administration of the Dowalski family has saved it from civil wars during the last century. Also important is the seaport of Gdansk, which in the past was a source of several conflicts with Valeryia.", "link": "http://pandius.com/klagorst.html", "author": "Giulio diSergio-Orsini"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1374.0,2835-594.0]},"properties":{"name": "Tcheltar"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1386.0,2835-610.0]},"properties":{"name": "Vrancea", "capitalOf": "the Duchy of Vrancea", "areaPopulation": 3000, "description": "Vrancea is a mountainous realm; it is probably the poorest state of the confederated kingdoms. Some of the human villages here try to farm goats and grow potatoes, with meagre results. Duke Nhorg (Duke, human, male, Pr14 of Nyx) is rumoured to be a vampire or a lich, because he has never been seen for years, though orders and other proclamations continue to arrive from the Castle of Aknar.", "link": "http://pandius.com/klagorst.html", "author": "Giulio diSergio-Orsini"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1352.0,2835-608.0]},"properties":{"name": "Kragm’aanle"}}, // Stygia
+
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1457.0,2835-588.0]},"properties":{"name": "Eeel Garun", "capitalOf": "Gournzee", "description": "This is a powerful country of xenophobic lizardmen (the <a href=\"http://www.lomion.de/cmm/varkha.php\"varkhas</a>) who do not like any human or demi-human race (of which their cleared their territory), with the exception of the gnomes from Szekesh (a small community of gnomes is even allowed to stay and trade in Gournzee land). As expected, the varkhas possess a very strong military.", "link": "http://pandius.com/gournzee.html", "author": "Giulio Caroletti", "image": "http://www.lomion.de/cmm/img/varkha.gif"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1474.0,2835-567.0]},"properties":{"name": "Porteui &\nCirrinembis"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1502.0,2835-500.0]},"properties":{"name": "The Valley of Ilsundal"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1448.0,2835-549.0]},"properties":{"name": "Grez", "capitalOf": "The Land of Closed Society", "description": "This land of towering peaks and vast glaciers - truly inhospitable for most races - was settled shortly after the Great Rain of Fire by a group of <a href=\"http://www.lomion.de/cmm/elemlafw.php\">hydrax</a> who found the polar climate and the crystal-like environment suitable to their needs. These hydrax have been living in Mystara for many millennia, but they kept their highly-hierarchical society away from contact with neighbouring cultures, and slowly expanded their territory according to their needs. The Land of the Closed Society effectively act as a major land hindrance between the Sylvan Realm (and its surrounding cultures) and the Klagorst Confederacy (and surroundings).", "link": "http://pandius.com/greenkhl.html", "author": "Giulio Caroletti", "image": "http://www.lomion.de/cmm/img/elemlafw.gif"}}, 
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1442.0,2835-516.0]},"properties":{"name": "Agzanizbad", "description": "A community of iron-age Yevo barbarians who is trapped in a long and impregnable valley between the Land of the Closed Society and the White Orcs of the North. A narrow, hidden canyon is the only - easily tenable - entrance to the valley. The Agzanizs were trapped there when the White Orcs of the North conquered the coast, in AC 175, and they spent the following centuries secluded from the rest of the world", "link": "http://pandius.com/whiteorc.html", "author": "Giulio Caroletti"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1427.0,2835-473.0]},"properties":{"name": "The White Tower", capitalOf: "Sylvan Realm", link: "http://pandius.com/sylvrelm.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1386.0,2835-506.0]},"properties":{"name": "The White Orcs of the North"}}, // tribes
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+
+[1362.0,2835-569.0]},"properties":{"name": "Valeryistadt", "capitalOf": "County of Valeryia", "sitePopulation": 6300, "areaPopulation": 9000, "description": "Valeryia is a human territory, and the most civilised of the Heartlands. It is ruled by the just Count Janick Essecki (Count, human, male, F12), who has recently reformed the army. Valeryia is an agricultural nation, but is also renowned for its horses, and is possibly the richest territory of the Heartlands-probably due to its geographical position. The capital of the county is Valeryistadt (pop. approximately 6,300); other important settlements are the city of Grawyz (pop. 2,100), which is administered by the local Guild of Adventurers ruled by Andrzej Vatacek (Guild Master, human, male, Pr20 of Aurial (Sinbad)), and the town of Cahen.", "link": "http://pandius.com/klagorst.html", "author": "Giulio diSergio-Orsini"}}, // Valeryia
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1406.0,2835-568.0]},"properties":{"name": "Hrektizaga"}}, // Szekesh
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1526.0,2835-457.0]},"properties":{"name": "Wyvor"}}, // Laathor
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1500.0,2835-468.0]},"properties":{"name": "Dragonwatch Keep", "description": "From the Dragonlord Trilogy novels. It is an old fortress of Blackmoor, run by mages who was emptied and abandoned shortly before the Great Rain of Fire and survived the cataclysm. It was later taken by the dragons (notably gold dragons), who established there an important temple of the Great One and used its vaults to keep the fabled Armour of the Dragonlord.", "author": "Canonical"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+
+[1333.0,2835-671.0]},"properties":{"name": "The Stone of Years", "capitalOf": "Land of Chevalle", //not a capital, just center
+"description": "This vast land is a wild territory for human and demi-human standards, but it is densely inhabited by centaurs, satyrs, fey and other faerie folks. Lycanthropes and friendly humans (rangers, druids) live here as well. Government is pretty decentralized, and most of its politics is related to border disputes, especially against Vrancea. In the last century the land of Chevalle entered and exited the Klagorst Confederacy for a few times.", "link": "http://pandius.com/chevalle.html", "author": "Giulio Caroletti"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1260.0,2835-695.0]},"properties":{"name": "Khorunustadt", "capitalOf": "Brasov", "description": "A kingdom of peaceful and hard-working people loosely related to the inhabitants of the Klagorst Confederacy. Some of them are actually of mixed elven-human ancestry. Land is warmer and more fertile than in the Klagorst Confederacy, famines are mostly unknown. As a general rule the Brasovians fought mostly defensive wars and never have lost one of them (so far).", "link": "http://pandius.com/brasov.html", "author": "Giulio Caroletti"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1366.0,2835-651.0]},"properties":{"name": "Auropolis", "description": "Small settlement inhabited by the duckmen, a magical and industrious breed between humans and ducks created decades ago in Glantri. Due to the harsh territory in which they live, duckmen are sometime forced to steal what they need from neighbouring countries, but managed to build their own industries and magical specializations nevertheless.", "link": "http://pandius.com/auropols.html", "author": "Giulio Caroletti"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1358.0,2835-702.0]},"properties":{"name": "The City of Light", "description": "Small settlement of peaceful <a href=\"http://www.lomion.de/cmm/bargda.php\">bargda</a> who follow the way of Ixion and hope for a future redemption. This reclusive culture lives in a valley facing east, where the dawning light is interpreted as a sign of hope for reconciliation with their patron.", "link": "http://pandius.com/sorrlast.html", "author": "Giulio Caroletti", "image": "http://www.lomion.de/cmm/img/bargda.gif"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1518.0,2835-493.0]},"properties":{"name": "Niflheim Temple"}},
+// some locations approximate,see http://digidownload.libero.it/Halag/images/brun.png
+
+//Archonisk
+//Chusovoi
+//Eritteus
+
+
+//TODO: Sind & Great Waste(>>)
+//Yavldom(>>)
+//Southern Arm of Immortals
+//Midlands miscellanea
+//also Niponeria
+
+//Hyboria, Endworld Spine and Klagorst covered by Klagorst region map
+
+
+
+
+
+
+// Isle of Dawn
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2326.0,2835-772.0]},"properties":{"name": "Dunadale", link: "http://pandius.com/dunadal.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2468.0,2835-940.0]},"properties":{"name": "Edairo", capitalOf: "Thothia", link: "http://pandius.com/thothia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2375.0,2835-1089.0]},"properties":{"name": "Furmenglaive", link: "http://pandius.com/fglaive.html"}}, // ?
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2245.0,2835-889.0]},"properties":{"name": "Redstone", link: "http://pandius.com/redstone.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2282.0,2835-868.0]},"properties":{"name": "Newkirk", capitalOf: "Westrourke", link: "http://pandius.com/westrour.html"}}, // capital?
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2312.0,2835-890.0]},"properties":{"name": "East Portage", link: "http://pandius.com/eastport.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2282.0,2835-912.0]},"properties":{"name": "West Portage", link: "http://pandius.com/westport.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2230.0,2835-708.0]},"properties":{"name": "Helskir", link: "http://pandius.com/helskir.html"}},
+//TODO: Caerdwicca, Ekto, Isle of Dawn as a whole, Meridionia, Septentriona, Trikelios 
+
+// Alphatia
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2603.0,2835-522.0]},"properties":{"name": "Starpoint", capitalOf: "Ambur", link: "http://pandius.com/ambur.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2562.0,2835-543.0]},"properties":{"name": "Skyreach", capitalOf: "Floating Ar", link: "http://pandius.com/fltingar.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2522.0,2835-575.0]},"properties":{"name": "Shiell", capitalOf: "Frisland", link: "http://pandius.com/kfrislnd.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2510.0,2835-600.0]},"properties":{"name": "Shraek", capitalOf: "Blackheart", link: "http://pandius.com/kblkhart.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2444.0,2835-625.0]},"properties":{"name": "Limn", link: "http://pandius.com/klimn.html"}}, // Trollhattan 
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2496.0,2835-663.0]},"properties":{"name": "Alfleish", capitalOf: "Shiye-Lawr", link: "http://pandius.com/shiylawr.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2415,2173]},"properties":{"name": "Draco", capitalOf: "Stonewall", link: "http://pandius.com/stnwall.html"}},  // fix
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2427.0,2835-700.0]},"properties":{"name": "Denwarf-Hurgon", capitalOf: "Stoutfellow", link: "http://pandius.com/stoufllw.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2615.0,2835-673.0]},"properties":{"name": "Citadel", capitalOf: "Betellyn", link: "http://pandius.com/bettllyn.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2670.0,2835-598.0]},"properties":{"name": "Greenwood", capitalOf: "Foresthome", link: "http://pandius.com/forsthme.html"}}, // Foresthome
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2454.0,2835-746.0]},"properties":{"name": "Aasla", capitalOf: "Haven", "link": "http://pandius.com/khaven.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2424.0,2835-855.0]},"properties":{"name": "Eagret", capitalOf: "Greenspur", link: "http://pandius.com/greenspr.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2550.0,2835-885.0]},"properties":{"name": "Bluenose", capitalOf: "Arogansa", link: "http://pandius.com/karognsa.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2606.0,2835-866.0]},"properties":{"name": "Archport", capitalOf: "Eadrin", link: "http://pandius.com/keadrin.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2673.0,2835-822.0]},"properties":{"name": "Rardish", capitalOf: "Randel", link: "http://pandius.com/krandel.html"}}, 
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2600.0,2835-813.0]},"properties":{"name": "Errolyn", capitalOf: "Theranderol", link: "http://pandius.com/thndrol.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2549.0,2835-723.0]},"properties":{"name": "Sundsvall", capitalOf: "Vertiloch and Alphatian Empire as a whole", link: "http://pandius.com/vertloch.html", image: "http://pandius.com/atu0i8.jpg"}},
+//TODO:
+//Alatian Islands 
+//Alphatian Sea
+//Grey Islands
+//Heldun
+//Hillvale
+//Kendach
+//NACE
+//Ochalea
+//The Pearl Islands
+//Queodhar
+//Sundsvall Maelstrom 
+//Veroth
+
+//Alphas'ar 
+//Arkan
+//The Underside 
+
+
+
+
+// Bellissaria
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2865.0,2835-914.0]},"properties":{"name": "Alchemos", capitalOf: "Meriander", link: "http://pandius.com/meriandr.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2839.0,2835-1001.0]},"properties":{"name": "Horken", link: "http://pandius.com/horken.html"}}, 
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2791.0,2835-871.0]},"properties":{"name": "Aaslin", capitalOf: "Notrion", link: "http://pandius.com/notrion.html"}}, 
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3012.0,2835-1091.0]},"properties":{"name": "Spearpoint", capitalOf: "Surshield", link: "http://pandius.com/surshiel.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2772.0,2835-975.0]},"properties":{"name": "Blueside", capitalOf: "Lagrius", link: "http://pandius.com/lagrius.html"}}, 
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2629.0,2835-983.0]},"properties":{"name": "Alinquin", capitalOf: "Dawnrim", link: "http://pandius.com/dawnrim.html"}},
+// TODO: Bellissaria as a whole
+
+  
+
+
+
+
+
+// Davania
+// Western - Izondan sphere
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1220.0,1376.0]},"properties":{"name": "Muda"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1279.0,1356.0]},"properties":{"name": "Jakan"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1329.0,1378.0]},"properties":{"name": "Ikl’ok"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1369.0,1437.0]},"properties":{"name": "Virdin"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1367.0,1393.0]},"properties":{"name": "Amara"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1394.0,1376.0]},"properties":{"name": "Tambar"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1380.0,1342.0]},"properties":{"name": "Jan’a"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1420.0,1381.0]},"properties":{"name": "Saak"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1402.0,1339.0]},"properties":{"name": "Ghur"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1460.0,1372.0]},"properties":{"name": "Kresh"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1460.0,1344.0]},"properties":{"name": "Duur"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1555.0,1412.0]},"properties":{"name": "Markresh"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1501.0,1339.0]},"properties":{"name": "Duarghor"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1614.0,1365.0]},"properties":{"name": "Kwythellar", link: "http://pandius.com/kwythel.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1554.0,1308.0]},"properties":{"name": "Kilmur"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1411.0,1313.0]},"properties":{"name": "Mis", link: "http://pandius.com/mis.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1362.0,1290.0]},"properties":{"name": "Tjeni"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1406.0,1248.0]},"properties":{"name": "Zebratta"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1298.0,1237.0]},"properties":{"name": "Isele"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1381.0,1174.0]},"properties":{"name": "Zungwe"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1422.0,1131.0]},"properties":{"name": "Amazu"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1261.0,1153.0]},"properties":{"name": "Bumbwe", link: "http://pandius.com/arica.html"}}, // not quite fitting?
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1381.0,1174.0]},"properties":{"name": "Zungwe"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1353.0,1116.0]},"properties":{"name": "Ibumu"}},
+
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1610.0,1127.0]},"properties":{"name": "Izonda", link: "http://pandius.com/izonda.html"}}, // Invincible dictatorship of
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1607.0,840.0]},"properties":{"name": "Pelatan", link: "http://pandius.com/pelatan.html"}}, // Golden Matriarchy of
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1812.0,626.0]},"properties":{"name": "Nivall"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1874.0,930.0]},"properties":{"name": "Orvol"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1833.0,1049.0]},"properties":{"name": "Shami"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1792.0,1132.0]},"properties":{"name": "Shain"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1790.0,1188.0]},"properties":{"name": "Talkai"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1716.0,1188.0]},"properties":{"name": "Shir"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1688.0,1262.0]},"properties":{"name": "Eseri", link: "http://pandius.com/eseri1.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1740.0,1248.0]},"properties":{"name": "Raka"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1779.0,1256.0]},"properties":{"name": "Alol"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1833.0,1226.0]},"properties":{"name": "Dreka"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1864.0,1222.0]},"properties":{"name": "Port\nElsterbury", population: 6000, description: "Founded by Bellayne in AC 927, Port Elsterbury was originally supposed to be a staging area for a massive colonisation effort to head off Renardois efforts at colonising the Sound. The land rush failed to materialise, and efforts to drain the swamplands at the mouth of the Charing river, upon which the town was built, failed. Only a trickle of people ever came to this place, and these were often the outcasts of Bellayne society - derelicts, fugitives from justice, and the like. Travellers coming here will see what are obviously once-opulent palaces, manors, and public buildings being used as flophouses, taverns, and gambling halls. Truly an urban planning disaster. In fact, it is only by virtue of the 500-man garrison here that the town remains a colony of Bellayne - otherwise it would have been abandoned to its own fate (there is a strong pro-imperialist faction in the Bellayne government that has managed to keep the troops here). Despite the military presence, Port Elsterbury is a free city for all intents and purposes, and anything can be traded here for a price, including slaves. Lawfully-aligned adventurers would not wish to stay here long - the aura of social decay and malevolence is strong here - and any newcomer to this town who is not careful will be relieved of their valuables. Enterprising adventurers could offer to clean up the place for Bellayne for a reward (or perhaps governance of the town), but they would have their work cut out for them.", link: "http://pandius.com/adakkian.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1726.0,1300.0]},"properties":{"name": "Schweidnitz", population: 2500, description: "Founded in AC 977 as a military outpost of the Heldannic knights, Schweidnitz has since grown into a moderately prosperous rest stop for ships travelling the northern coast of Davania to the Adakkian Sound or to the Strait of Izonda. Ships plying the opening trade routes between the Known World and the Savage Baronies, and who do not which to risk overland travel across the Neck on the Serpent Peninsula, often stop here to restock essential supplies and for some shore leave for the crew. Yavdlom offers few ports of sufficient size on its western coast, and a direct journey from Kastelios to Slagovich, while shorter, is more expensive in terms of docking fees, and the Kastelians lack the resources to provide armed escorts on demand (for a small fee). These factors have made Schweidnitz quite prosperous considering its location. The climate here is mild, considering its latitude, and the waters of <em>Schweidnitzere Bucht</em> (Schweidnitzer Bay) are warm and filled with all forms of fish. The soil is also quite rich; this colony has no problems feeding itself. The local activities here are agriculture, shipbuilding, and mining - primarily for iron and silver. The leadership of the Heldann Freeholds is planning to expand this settlement, in order to tighten the Heldanner claim to the area. Apart from colonists, many would-be explorers come here to unlock the mysteries of the Izondian Desert, as well as learn about the wonders of the nearby Adakkian Sound. Players who venture here can find numerous forms of employment here, as in any frontier town.", link: "http://pandius.com/adakkian.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1728.0,1316.0]},"properties":{"name": "Makal"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1742.0,1346.0]},"properties":{"name": "Tlik’kkill", link: "http://pandius.com/tlikkil1.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1753.0,1280.0]},"properties":{"name": "Mogluur", link: "http://pandius.com/mogluur1.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1791.0,1303.0]},"properties":{"name": "Ka"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1808.0,1290.0]},"properties":{"name": "Porto\nSantuário", population: 8700, description: "Founded in AC 976 as a way-station for Texeiran merchantmen plying their trade further south, Porto Santuário has since grown into a prosperous garrison town. Protected on its three landward sides by high walls, and by a sea wall along the Sound, its residents feel quite safe. Many inhabitants make a living mining the nearby hills for copper, platinum, and rubies, which are in abundance here. Many other squander their earnings at the numerous pubs and gambling houses - the other pillars of the local economy - while some save up their earnings and build palatial estates outside the confines of the town. Many travellers find themselves here on their way to the Izondian Desert, or further south towards the source of the Sound. Along with Beira (number 16 on the map), this town forms half of the so-called \"Texeiran gate\" (or the Texeiran Noose, depending on your sympathies). Both of the towns are situated on either side of the entrance to the Adakkian Sound such that they can control access to it. The Texeiran grip on the area will be tightened further when the settlement of Torres Novas is established sometime around AC 1007. It will be located 2 hexes due north of Porto Santuário, and will allow the \"Gate\" to be closed firmly. So far, the Gate has enlarged Texeiran coffers considerably, as any ship wishing to enter the Sound in order to access the other ports and colonies along its shores must pay a tariff valued at 5% of the net worth of the goods carried on board, or face the wrath of the Texeiran Southern Fleet based in both Beira and Porto Santuário. What this amounts to is a tax on visiting one's colonial possessions deeper within the Sound, and for doing business in the region. Needless to say, the atmosphere is very tense, and it would not take much for hostilities to erupt. As it stands now, no one has yet discovered a safe overland route into the Sound, and no one yet can match Texeiran naval prowess in the region. Travellers can find employment here as explorers, assisting homesteaders in gaining control of their land, and as sell-swords. They might also be lured by rumours of great wealth for the taking hidden in ruins deep within the jungle...", link: "http://pandius.com/adakkian.html"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1912.0,1164.0]},"properties":{"name": "Jelgavpils", population: 4000, description: "Founded around AC 500 by Littonian explorers who had been lost at sea for weeks, and has subsequently mixed with some of the natives, Jelgavpils is a moderately prosperous city-state, though it is little more than a town. Although there has been no contact with Littonia for centuries, the people here have kept much of their culture. Built on the Jelgava river, Jelgavpils commands a strategic location on prime agricultural land. The inhabitants grow their own vines for winemaking, raise their own livestock, and see to their own affairs. Generally, they are content with their existence, and wish to be left alone - shunning contact with most of the other settlements along the Sound. Adventurers finding this town will be treated with hospitality, and will be assisted in any way possible, but no great efforts will be made to encourage prolonged contact with outsiders.", link: "http://pandius.com/adakkian.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2046.0,1110.0]},"properties":{"name": "Shaedrin", population: 3800, description: "Founded by halflings knocked off course during the great migration towards Brun in BC 1300, this settlement has remained largely undisturbed for centuries. Although there is considerable contact with outsiders, and the ruling sheriff encourages open exchange of goods, society here remains largely closed to outsiders. There are no foreigners living within Shaedrin's bounds, and the inhabitants like it this way. These attitudes are actually a holdover from the period when the halflings were driven from their homes by the Varellyans so long ago, though there are no records of the original events. This place provides good opportunities to observe halfling culture as it was before extensive contact with outsiders, where Lalor is spoken almost exclusively, and traditions now forgotten in the Five Shires are still practised. Overall, the halflings here are independent, but willing to receive outsiders for a time - so long as they do not try to impose their ways or overstay their welcome.", link: "http://pandius.com/adakkian.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2110.0,1112.0]},"properties":{"name": "Porto\nCabinda", population: 9000, description: "This Vilaverdan colony was founded in AC 950, and was the southern half of what was for a time known as the \"Vilaverdan Fortress\" - two ports controlling access to the interior of Davania and the Brasol Mountains. In most respects it functions the same way as the Texeiran Gate, but most of the riches gained from it have since been lost to the operation maintained by their colonial rivals, the Texeirans. Needless to say, tensions have increased between the two nations, and full-scale war between the two is not unlikely in the coming years. Despite the tensions, Porto Cabinda remains prosperous, exporting the exotic fruits and vegetables, as well as sugar cane, grown on its plantations. Generally a quiet place, farther removed from the frontier existence experienced by so many other settlements of this region.", link: "http://pandius.com/adakkian.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2057.0,1001.0]},"properties":{"name": "Brasol", link: "http://pandius.com/brasolia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2121.0,1141.0]},"properties":{"name": "São Paulo", population: 7400, description: "Founded in AC 955, this Vilaverdan town forms the northern half of the so-called \"Vilaverdan Fortress\", which for several years controlled access to the interior of the continent. In many ways it is much like its counterpart, Porto Cabinda, with its pleasant farms and its plantations, supplying rich crops of tropical fruits and vegetables, as well as supplies of rubies from nearby mines. Generally a pleasant town, like its southern counterpart.", link: "http://pandius.com/adakkian.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2046.0,1187.0]},"properties":{"name": "Cap Saint-Renard", population: 6800, description: "Cap Saint-Renard was founded in AC 879 as a way-station for explorers and traders headed further inland. Large-scale settlement did not begin until AC 894, when substantial deposits of diamonds were discovered in some nearby hills. Since then, thousands have come here to seek their fortune. Today, Cap Saint-Renard is a prosperous town, full of shops and inns serving numerous travellers. This colony has the richest deposits of diamonds in the whole region, and its soils provide its plantations and farms with bountiful harvests. There is plenty of work to be had here for adventurers as guards, miners, and as explorers to stake claims and to expand Renardie's colonial holdings.", link: "http://pandius.com/adakkian.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1949.0,1265.0]},"properties":{"name": "Aelios", population: 9000, description: "Aelios is a fishing and farming town established by refugees from Cyclonia (location 6 on the map) in AC 307, during the migrations that followed the collapse of the Milenian Empire. Few people come to this town, save for the occasional Vilaverdan or Texeiran explorer heading inland to trade with the tribespeople of the Meghales Amosses Desert. Travellers will find an independent people here, who have largely abandoned Milenian ways save for their language and architectural styles.", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1901.0,1293.0]},"properties":{"name": "Beira", population: 7400, description: "Founded as a trading post in AC 968 for obtaining rare wood and spices from nearby natives, Beira has only recently grown into the fortress town it is today. Along with Porto Santuário (location 15 on the map), it forms the \"Texeiran Gate\", a strategic arrangement of colonies that commands access to the Sound (please see the description under location 15 for more information). This is where the similarity ends with its sister town. Where Porto Santuário is relatively frontier-like, and often violent, Beira is far more settled and peaceful. The local Oltec tribespeople trade peacefully with the Texeirans, trading their gold and pelts for Texeiran weapons and amenities such as cast-iron pots. Enterprising players can find employment here as caravan guards, mercenaries, or as explorers.", link: "http://pandius.com/adakkian.html"}},
+//TODO: Thalla
+
+// Northern - Milenian sphere
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1941.0,2835-1278.0]},"properties":{"name": "Kastelios", population: 25000, description: "One of the more accessible cities on Davania, Kastelios is rapidly opening up to the traders of the Known World, such as those from Minrothad, Ierendi, and occasionally Thyatis. This port city of the former Milenian Empire has experienced a renaissance as both eager traders and tourists flock to its harbours, to what has been dubbed \"The Gateway to the South\", in search of adventure and profit. The city itself has undergone considerable expansion in recent years as explorers and settlers arrive in a steadily growing trickle, slowly overwhelming the meagre port facilities. Kastelios' strategic position between the Amoros and Vasilios river systems, and its commanding view of the Serpent Strait, has attracted the attention of Thyatis, ever eager to strengthen its foothold on the continent. Meanwhile, Minrothaddan traders have been attempting to buy out the local trading houses, in order to create a captive market for their goods. Between these two outside powers, and conflicts with other city-states on the Meghala Kimata Plains, there is no shortage of intrigue in Kastelios. Behind closed doors and in dark alleyways, people gather to foment their plans, whether they are pro-Thyatian annexationists, would-be despots, or those who would rebuild the Milenian Empire. Players may become involved in these plans unwittingly, and soon find themselves the targets o f street gangs or secret societies. Players can find just about any kind of work here, and Kastelios is an excellent staging point to introduce them to the wonders of Davania.", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1978.0,2835-1254.0]},"properties":{"name": "Garganin", population: 20000, description: "Formerly a colony of Hule, Garganin lost contact with its motherland over 150 years ago, and has not regained it since. Due to this longer period of isolation, the inhabitants of this city do not share many of the beliefs of their compatriots in Hule. They do not have expansionistic drives, and the worship of Bozdogan is not nearly as prevalent. In fact, immersion in a foreign environment has seen them adopt many of the Immortals worshipped in other city-states, such as Zirchev, Halav, Petra, Asterius, and others. As such, the inhabitants of Garganin no longer consider themselves Huleans, and wish to be left alone to deal with their own problems, such as frequent humanoid raids. Players may find employment here as bandit hunters (a big problem here), or guards. They may also wish to settle down here, as the city's ruler is always eager to obtain protection for his citizens, and is not above granting land to do it. Unlike its neighbour, Kastelios, Garganin does not have a reputation for welcoming newcomers, and in fact tries to have as little to do with them as possible.", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1900.0,2835-1328.0]},"properties":{"name": "Telos Taksidhi", population: 9000, description: "Largely a farming community, Telos Taksidhi was never a very important town in the Milenian Empire. The old overland trade routes bypassed it completely, and few people ever came or left. It was so far off the proverbial beaten path that even the collapse of the Milenian Empire did not affect local events very much. Due to its isolation, this town has always been relatively self-contained, and continued to be such after BC 50. The first extensive contact with outsiders since the collapse was with a Minrothaddan explorer in AC 979, who returned home and obtained permission from the merchant houses to open a trade route to the region in order to obtain rare spices, fruits, and vegetables. Thus was interest in the town, and the Green Coast in general, born. Only now are residents learning the true extent of what happened over the past thousand years, and now the Telosians are beginning to question why they have been so lucky in comparison. The only interesting feature in this town is the Minrothad consulate/trading post, the town's only connection to the Known World, a fact of which the Minrothaddans are very aware, as they slowly entrench themselves into the regional economy.", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1926.0,2835-1355.0]},"properties":{"name": "Ilioloosti", population: 18700, description: " Ilioloosti is the sister-city of Mivosia, which, although lacking the same smug pride of that city, still manages to dominate the villages in its area. Its government has managed to maintain some semblance of Milenian democracy, albeit a corrupted version. Perhaps the greatest attraction of this city is its famous (at least, by local standards) Academy of the Arts, where philosophers, artists, and writers hone their skills under the tutelage of acknowledged masters, and some surviving documents of the Milenian Empire are known to exist. It is also at the Academy where revolutionary ideas, such as the full restoration of Milenian democracy, are being discussed. For passers-by, Ilioloosti is an island of relative peace in a veritable sea of chaos and uncertainty, where it is possible to obtain employment as caravan guards, explorers, or spies (the rivalry with Mivosia is deeply entrenched).", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1940.0,2835-1408.0]},"properties":{"name": "Cyclonia", population: 9500, description: "Once a great mining centre, Cyclonia has been in decline for the past thousand years. At the height of Milenian power, Cyclonia was a great city of 85,000, many of whom were great stonemasons, sculptors, smiths, and jewellers. After the collapse of the empire in BC 50, the generals in command of the city were able to hold it against barbarian attacks from the Meghales Amosses Desert. Since it was a largely isolated settlement to begin with, full knowledge of the empire's collapse did not reach it until BC 38. Alarmed at the development, Cyclonia's leaders organised several expeditions to gain control of as much land as possible over the next 300 years, knowing full well that the city could not survive on its own for long due to a lack of arable land in the region. During this time barbarian and humanoid incursions became more frequent, and the city's strength began to ebb under the pressure as losses could not be easily replaced. One group of colonists from Cyclonia managed to find greener pastures, and founded the city of Aelios (#17 on the map). Disheartened over the apparent hopelessness of the situation, people left Cyclonia over the years, taking their chances with the unknown. People coming to Cyclonia will at first think the place is in ruins, since most buildings are dilapidated from neglect. At the centre of the ruins lies a town, surrounded by high walls and guarded vigilantly. Passers-by will likely attract the attention of the locals, as potential saviours to lead them to a safer place, or to help them reclaim their city.", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1886.0,2835-1392.0]},"properties":{"name": "Hrissopoli", population: 7000, description: "Hrissopoli was, in its heyday, the sister-city to Cyclonia. It boasted a population of 67,000, though it experienced a much more rapid decline. With the collapse of central authority in BC 50, Hrissopoli's army found itself without reliable communications or instructions, and soon feel victim to the rampaging humanoid hordes swarming out of the Adakkian Mounts. Within three weeks, over three-quarters of the city had been looted and burned, the rest spared destruction when the horde began to squabble amongst itself, and was finally driven out by the remaining inhabitants. Since then, Hrissopoli has recovered somewhat through sporadic trading with Ilioloosti and Telos Taksidhi, though repeated barbarian and humanoid raids have prevented the town from regaining its former glory. Newcomers to the scene will be looked upon with caution, and if proven non-threatening, will be looked upon as possible saviours against the raids. Adventurers would have their work cut out for them.", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1860.0,2835-1338.0]},"properties":{"name": "Piralani"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1978.0,2835-1313.0]},"properties":{"name": "Kalavronti", population: 9500, description: "Kalavronti was a bustling mining and agricultural town during the height of the Milenian Empire, but now this ancient town has fallen on hard times. Increasing bandit raids have, reduced the wealth and productivity of the town, and made its populace suspicious of outsiders; but has also instilled in the people a sense of self-sufficiency. There is a general feeling that conditions are bad, but they could be worse, and so there is no reason to rely on outside powers to solve problems. Players who offer their services as bandit hunters will be welcomed and appreciated, but any attempts to try to reincorporate Kalavronti into the outside world will be met with resistance.", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[1818.0,2835-1382.0]},"properties":{"name": "Bronev"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2011.0,2835-1333.0]},"properties":{"name": "Artheis"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2045.0,2835-1363.0]},"properties":{"name": "Mivosia", population: 21000, description: "Mivosia was, and still is, one of the most powerful city-states along the Meghalo Fithi river system. Its elite corps of soldiers have managed to subjugate the surrounding villages, and its leaders are determined to bring order to the region. If any inland Davanian cities have any hope of resurrecting the Milenian Empire, Mivosia would be among those most likely to be able to do it, if its leaders could present a united front. Order is maintained here only by the iron-fisted rule of the governing elite, which ties the peasants to their land, and keeps the citizenry in their place. Mivosia is not an inviting place to travellers.", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2062.0,2835-1384.0]},"properties":{"name": "Parthenaeum"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2100.0,1528.0]},"properties":{"name": "Izmira", population: 12000, description: " Izmira is the capital city of the Kingdom of Emerond, and much of the adventure opportunities available in other capitals can also be found here. As the official residence of the royal family, Izmira offers many plots - by natives and foreigners alike, for would-be heroes to foil. Besides the inherent beauty of this city (like all Emerondian settlements, Izmira seems to have been \"grown\" out of living plant matter, rather than built), travellers can uncover many mysteries about the Emerondians. It is said that documents containing information on the true origins of the Emerondians can be found somewhere beneath the city, as well as detailed accounts of events in northern Davania over the past thousand years, possibly the only ones in existence.", capitalOf: "Emerond", link: "http://pandius.com/adakkia.html"}},
+//TODO: Glauqnor 
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2168.0,1564.0]},"properties":{"name": "Raven Scarp", population: 20000, description: " Originally the main meeting place of the Raven Clan Hinterlanders, this area was conquered around AC 988, along with stretches of the Davanian coastline near here. Today, it is a bustling port city that receives goods from Minrothad, Yavdlom, Ierendi, Kastelios, Ochalea, the Pearl Islands, and occasionally Cestia. For many people, this is the first taste of Davania, where many come to start a new life - though Kastelios is now rapidly rising as another gateway. Unlike Kastelios, new arrivals here must pass through a rigmarole of Thyatian bureaucracy - from entry visas to personal documentation checks to verification of land allocation for those seeking a new start here. This is another useful place for characters to begin their exploration of Davania - one that lacks much of Kastelios' \"anything goes\" atmosphere, but has a slightly thicker veneer of \"Known World sensibilities and hospitality\". It is no less dangerous or full of intrigue, though.", capitalOf: "Thyatian Hinterlands", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2154.0,1413.0]},"properties":{"name": "Polakatsikes", population: 8600, description: "This marginal farming town was barely established when the Milenian Empire collapsed. At the time, it was among the southernmost of Milenian settlements, and near the source of the great Meghalo Fithi river. Aside from these distinctive features, this town is quite unremarkable, save for its almost total isolation. This isolation was a considerable problem over the last millennium, as incursions from the desert nomads to the south. In general, though, the town has managed to hold off all but the worst of the raids, and achieve some measure of prosperity. The people here vaguely remember the Milenian Empire, and do not miss it, for the one thing that remains clear in their memories as a people is the fact that they were ignored even then. People who arrive at this town will find a large group of rugged individualists, ruled by a town council, who bow to no one - but will happily accept any aid against the raids that still occur now and then.", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2167.0,1425.0]},"properties":{"name": "Tyrnae"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2202.0,1475.0]},"properties":{"name": "Milenopolis"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2202.0,1475.0]},"properties":{"name": "Milenopolis"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2286.0,1471.0]},"properties":{"name": "Manacapuru", population: 7600, description: "The ancient stone city, capital of the Manacapuru tribespeople, was once known as Ixachitl, a prosperous, but little-known Oltec city-state descended from the ancient nation of Orimul, which vanished along with many other Davanian nations in the battles against the Carnifex hordes of Y'hog. Ixachitl flourished until roughly BC 200, when a rival faction within the city's leadership arose that questioned the wisdom of maintaining peace with the Milenian Empire. This faction, encouraged by Atzanteotl, gained control of the city through a bloody coup and proceeded to make war upon the neighbouring Milenians. The war ended with a crushing defeat for Ixachitl, which was then plunged into anarchy, in which thousands either died or fled into the jungles, and the worshippers of Atzanteotl were left in control of a pile of rubble. Over the following centuries, almost everything of the original culture was forgotten, and now the descendants of those followers of Atzanteotl are little more than savages, who revere their treacherous Immortal still, and have perfected the art of poisoning weapons. The city has been rebuilt anew, and is now reminiscent of those settlements occupied by the Children of the Viper in the Atruaghin Clans, evidence to some of divine instruction...", link: "http://pandius.com/adakkia.html"}}, // area
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2312.0,1428.0]},"properties":{"name": "Bogdashkan"}}, // area
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2429.0,1420.0]},"properties":{"name": "Yasuko", link: "http://pandius.com/adakkia.html"}}, // area
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2631.0,1343.0]},"properties":{"name": "Ilarnn"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2558.0,1240.0]},"properties":{"name": "Serpentine Empire"}}, // capital name not given
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2791.0,1284.0]},"properties":{"name": "New Arypt", link: "http://pandius.com/arypt.html"}}, // capital name not given
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2816.0,1184.0]},"properties":{"name": "Katapec", link: "http://pandius.com/arypt.html"}}, // capital name not given
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2482.0,1146.0]},"properties":{"name": "Odak’Tar", link: "http://pandius.com/odak_tar.html"}}, // capital name not given
+
+// Eastern (& central) - Varellyan sphere
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2663.0,1060.0]},"properties":{"name": "Vanya’s Rest", link: "http://pandius.com/adakkia.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2660.0,988.0]},"properties":{"name": "Kechamar"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2565.0,1019.0]},"properties":{"name": "Suur"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2653.0,920.0]},"properties":{"name": "Caducea"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2651.0,898.0]},"properties":{"name": "Badghaan"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2416.0,963.0]},"properties":{"name": "Ar’Thab"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2803.0,872.0]},"properties":{"name": "Tabnil", link: "http://pandius.com/varellya.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2231.0,1139.0]},"properties":{"name": "Nevumm"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2192.0,1119.0]},"properties":{"name": "Klath T’zarth", population: 8800, description: "This unusual town was founded around AC 300 by an expedition of Adakkian Carnifex and their Troglodyte servants, at the confluence of what they called the Shakkor and Y'hgg rivers, and upon the ruins of the Varellyan city of Priallus. They named it Abb-H'zoth. By AC 400, the town was rapidly growing, and the Carnifex rulers began making plans to expand their holdings and drive out those of other races. They did not get far, however, before a horde of lizard men, who had been wandering for centuries after the destruction of their homeland to the southwest, decided to move in and take control. Meeting with some rebellious Troglodytes, they encouraged thoughts of revolt, promising them freedom if they helped them conquer the town. Within weeks, the Troglodyte servants rose up against their masters, and slaughtered them, suffering great losses in the process. Unfortunately, the lizard men had no intention of giving the Troglodytes their freedom, and moved in and exterminated the weakened victors. Renaming the town Klath-T'zarth, the lizard men remade it to their liking, destroying the unpleasant obsidian buildings and replacing them with ones of more mundane stone. Since then, the population has grown slowly, eking out an existence from the surrounding lands and the nearby Bogs of Greth through fishing and primitive farming. Some money is also made by providing guides to lead travellers to half-sunken ruins (many of them Varellyan) scattered throughout the marshlands, and by hiring out warriors as mercenaries (as Vilaverde is doing in preparation for a war with Texeiras). Apart from these activities, there is little contact with the outside world - few would want to come here, and the inhabitants do not want the interference of outsiders. Thus this town remains a mystery, which some enterprising merchants see as virgin territory for their goods. Adventurers would have little to do here, save for exploring the nearby ruins, and possibly learning about the now-forgotten deed against the Carnifex and their servants.", link: "http://pandius.com/adakkia.html"}},
+//TODO: Y'hog
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2603.0,864.0]},"properties":{"name": "Shuuriit"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2656.0,836.0]},"properties":{"name": "Yariit"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2574.0,686.0]},"properties":{"name": "N’djatwa"}}, // capital name not given
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2768.0,730.0]},"properties":{"name": "Ossir"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2938.0,745.0]},"properties":{"name": "Arnath", link: "http://pandius.com/lostvall.html"}}, // two cities
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3024.0,1035.0]},"properties":{"name": "Androkia", link: "http://pandius.com/oceania.html"}}, // capital name not given
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3080.0,1153.0]},"properties":{"name": "Manakara", link: "http://pandius.com/oceania.html"}}, // capital name not given
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3054.0,1212.0]},"properties":{"name": "Morovoay", link: "http://pandius.com/oceania.html"}}, // capital name not given
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3147.0,1260.0]},"properties":{"name": "Ambiroa", link: "http://pandius.com/oceania.html"}}, // capital name not given
+//TODO: Lhomarr
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2470.0,822.0]},"properties":{"name": "Diverga"}}, // capital name not given
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2348.0,840.0]},"properties":{"name": "Kalamad Keep"}}, // capital name not given
+//TODO: Platea
+
+// Southern - Elven sphere
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2232.0,529.0]},"properties":{"name": "Gruun"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2150.0,676.0]},"properties":{"name": "Fedil"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2181.0,664.0]},"properties":{"name": "Meril"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2280.0,647.0]},"properties":{"name": "Tiyab", link: "http://pandius.com/highshie.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2493.0,645.0]},"properties":{"name": "Helemjir\ngiants"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2232.0,529.0]},"properties":{"name": "Gruun"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2507.0,492.0]},"properties":{"name": "Tarylion"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2588.0,540.0]},"properties":{"name": "Sheyl"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2575.0,415.0]},"properties":{"name": "Porad"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2379.0,448.0]},"properties":{"name": "Lindenil"}},
+
+
+
+
+// Vulcania proper
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2833.0,624.0]},"properties":{"name": "Niscosenia", link: "http://pandius.com/lostvall.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2748.0,551.0]},"properties":{"name": "Thimhallan", link: "http://pandius.com/vulcania.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2996.0,662.0]},"properties":{"name": "Thallios"}},
+
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3092.0,508.0]},"properties":{"name": "Snartan Empire", link: "http://pandius.com/vulcania.html"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3280.0,710.0]},"properties":{"name": "Schreckstadt"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3345.0,758.0]},"properties":{"name": "Erkalion"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3515.0,725.0]},"properties":{"name": "Varadghír", link: "http://pandius.com/vardghir.html"}},
+
+
+// Skothar drafts
+/*{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3401.0,2426.0]},"properties":{"name": "M-Nepal"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3535.0,2433.0]},"properties":{"name": "M-Bhutan"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3736.0,2449.0]},"properties":{"name": "M-Tibet"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3959.0,2058.0]},"properties":{"name": "M-China"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[4399.0,1918.0]},"properties":{"name": "M-Manchuria"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3745.0,1828.0]},"properties":{"name": "M-Myanmar"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[3904.0,1836.0]},"properties":{"name": "M-Thailand"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[4115.0,1831.0]},"properties":{"name": "M-Indochina"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[4011.0,1760.0]},"properties":{"name": "M-Malaysia"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[4600.0,1719.0]},"properties":{"name": "M-Korea"}},
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[4796.0,1673.0]},"properties":{"name": "M-Ethiopia"}},*/
+{"type":"Feature","geometry": {"type":"Point","coordinates":
+[2274.0,2664.0]},"properties":{"name": "Orol island"}}
+
+
+]};
+
+
+      // Map views always need a projection.  Here we just want to map image
+      // coordinates directly to map coordinates, so we create a projection that uses
+      // the image extent in pixels.
+      var extent = [0, 0, 5103, 2835];
+      var projection = new ol.proj.Projection({
+        code: 'xkcd-image',
+        units: 'pixels',
+        extent: extent
+      });
+
+      var map = new ol.Map({
+        layers: [
+          new ol.layer.Image({
+            source: new ol.source.ImageStatic({
+              //attributions: '© <a href="http://xkcd.com/license.html">xkcd</a>',
+              //TODO: add back again
+              url: 'http://pandius.com/Mystara72mphclear.png', //
+              projection: projection,
+              imageExtent: extent
+            })
+          })
+        ],
+        target: 'map',
+        view: new ol.View({
+          projection: projection,
+          center: [2056, 1948], //extent.getCenter(extent),
+          zoom: 5,
+          maxZoom: 8
+        }),
+        controls: ol.control.defaults({
+          attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
+            collapsible: false
+          })
+        }).extend([
+          new ol.control.MousePosition()
+        ]),        
+      });
+      
+      
+
+      var styleFunction = function (feature, resolution) {
+      	var color = "#faa";
+      	if (feature.get("link")) { color = "#fff"; }
+      	if (feature.get("description")) { color = "#4cf"; }
+        return new ol.style.Style({
+          fill: new ol.style.Fill({
+            color: 'rgba(255, 255, 255, 0.2)'
+          }),
+          stroke: new ol.style.Stroke({
+            color: '#ffcc33',
+            width: 2
+          }),
+          image: new ol.style.Circle({
+            radius: 4,
+            fill: new ol.style.Fill({
+              color: color //'#ffcc33'
+            }),
+            stroke: new ol.style.Stroke({
+                color: '#000',
+                width: 1
+            })
+          }),
+          text: new ol.style.Text({
+            font: '12px helvetica,sans-serif',
+            offsetY: 4,
+            textBaseline: 'top',
+            text: feature.get('name'),
+            fill: new ol.style.Fill({
+                color: '#000'
+            }),
+            stroke: new ol.style.Stroke({
+                color: '#fff',
+                width: 1
+            })
+          })
+        });
+      };
+      
+      var features = new ol.Collection((new ol.format.GeoJSON()).readFeatures(geojsonObject)); //new ol.Collection();
+      var featureOverlay = new ol.layer.Vector({
+        source: new ol.source.Vector({features: features}),
+        style: styleFunction
+      });
+      featureOverlay.setMap(map);
+      var select = new ol.interaction.Select();
+      map.addInteraction(select);
+      select.on('select', function (e) {
+        var selected = e.selected[0];
+        var html = "";
+        if (selected) {
+            html += "<p>" + selected.get('name') + "</p>";
+	        if (selected.get('capitalOf')) { html += "<p>Capital of " + selected.get('capitalOf') + "</p>"; }
+	        if (selected.get('description')) { html += "<p>" + selected.get('description') + "</p>"; }
+	        if (selected.get('author')) { html += "<p><i>By " + selected.get('author') + "</i></p>"; }
+	        if (selected.get('link')) { html += '<p><a href="' + selected.get('link') + '" target="_blank">See the Vaults</a></p>'; }
+	        if (selected.get('image')) { html += '<p><img src="' + selected.get('image') + '"></p>'; }
+
+    	} else {
+    		html += "Please select a site";
+    	}
+        document.getElementById('sidebar').innerHTML = html;
+      });
+
+
+/*
+      var modify = new ol.interaction.Modify({
+        features: features,
+        // the SHIFT key must be pressed to delete vertices, so
+        // that new vertices can be drawn at the same position
+        // of existing vertices
+        deleteCondition: function(event) {
+          return ol.events.condition.shiftKeyOnly(event) &&
+              ol.events.condition.singleClick(event);
+        }
+      });
+      map.addInteraction(modify);
+
+      var draw; // global so we can remove it later
+      var typeSelect = document.getElementById('type');
+
+      function addInteraction() {
+        draw = new ol.interaction.Draw({
+          features: features,
+          type: // @type {ol.geom.GeometryType} 
+            (typeSelect.value)
+        });
+        map.addInteraction(draw);
+      }
+
+
+      
+      //Handle change event.
+      typeSelect.onchange = function() {
+        map.removeInteraction(draw);
+        addInteraction();
+      };
+
+      addInteraction();
+*/      
+      
+      //(new ol.format.GeoJSON()).writeFeatures(features.getArray())
+      
+    </script>
+  </body>
+</html>
